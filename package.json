@@ -1,6 +1,6 @@
 {
   "name": "cubes-ui",
-  "version": "0.0.36",
+  "version": "0.0.37",
   "main": "dist/index.js",
   "license": "MIT",
   "module": "dist/index.js",
@@ -23,8 +23,8 @@
   },
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --external react --external react-dom && tsc -p tsconfig.build.json",
-    "test": "vitest",
-    "release": "bunx tsx release.config.ts && bunx semantic-release -e tsx ./release.config.ts"
+    "postbuild": "npm version patch --no-git-tag-version",
+    "test": "vitest"
   },
   "exports": {
     ".": {
@@ -65,9 +65,6 @@
     "@types/react": "^19.1.8",
     "@vitest/ui": "^3.2.4",
     "jsdom": "^26.1.0",
-    "semantic-release": "^24.2.7",
-    "ts-node": "^10.9.2",
-    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }
