@@ -8,6 +8,8 @@
 
 Modern, reusable, and **developer-friendly UI components** powered by **Tailwind CSS** — perfect for building scalable design systems and accelerating development.
 
+<a href="https://github.com/cubes-ui/cubes-ui">docs</a>
+
 [![npm downloads](https://img.shields.io/npm/dm/cubes-ui?style=flat&color=blue)](https://www.npmjs.com/package/cubes-ui)
 [![npm version](https://img.shields.io/npm/v/cubes-ui?style=flat&color=green)](https://www.npmjs.com/package/cubes-ui)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/cubes-ui?style=flat&color=orange)](https://bundlephobia.com/package/cubes-ui)

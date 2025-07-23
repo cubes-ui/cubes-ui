@@ -4,7 +4,8 @@ on:
   push:
     branches:
       - master
-
+permissions:
+  contents: write
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -18,7 +19,10 @@ jobs:
         with:
           node-version: 20
           registry-url: 'https://registry.npmjs.org'
-
+      - name: Check NPM_TOKEN
+        run: echo "Token length: ${#NPM_TOKEN}"
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Install Bun
         uses: oven-sh/setup-bun@v1
         with:
@@ -31,7 +35,7 @@ jobs:
         run: bun run build
 
       - name: Release
-        run: npx semantic-release -e ./release.config.ts
+        run: bunx semantic-release -e tsx ./release.config.ts
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

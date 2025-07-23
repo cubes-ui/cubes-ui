@@ -5,6 +5,10 @@
   "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/types/src/index.d.ts",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
   "files": [
     "dist"
   ],
@@ -20,7 +24,7 @@
   "scripts": {
     "build": "bun build src/index.ts --outdir dist --external react --external react-dom && tsc -p tsconfig.build.json",
     "test": "vitest",
-    "release": "ts-node --transpile-only release.config.ts && npx semantic-release -e ./release.config.ts"
+    "release": "bunx tsx release.config.ts && bunx semantic-release -e tsx ./release.config.ts"
   },
   "exports": {
     ".": {
@@ -63,6 +67,7 @@
     "jsdom": "^26.1.0",
     "semantic-release": "^24.2.7",
     "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "vitest": "^3.2.4"
   }
