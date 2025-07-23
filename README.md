@@ -1,14 +1,14 @@
 <p align="center">
   <img src="https://s6.uupload.ir/files/04fa27e6-9ace-471e-942b-04cf8d93db3d-photoroom(1)_31tw.png" 
        alt="Cubes UI Logo" 
-       style="width: 50%; max-width: 600px; display: block; margin: 0 auto;" />
+       style="width: 40%; max-width: 600px; display: block; margin: 0 auto;" />
 </p>
 
 # Cubes UI
 
 Modern, reusable, and **developer-friendly UI components** powered by **Tailwind CSS** — perfect for building scalable design systems and accelerating development.
 
-<a href="https://github.com/cubes-ui/cubes-ui">docs</a>
+<a href="https://github.com/cubes-ui/cubes-ui">read documentation</a>
 
 [![npm downloads](https://img.shields.io/npm/dm/cubes-ui?style=flat&color=blue)](https://www.npmjs.com/package/cubes-ui)
 [![npm version](https://img.shields.io/npm/v/cubes-ui?style=flat&color=green)](https://www.npmjs.com/package/cubes-ui)
