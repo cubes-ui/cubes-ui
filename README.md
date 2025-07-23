@@ -1,9 +1,3 @@
-<p align="center">
-  <img src="https://s6.uupload.ir/files/04fa27e6-9ace-471e-942b-04cf8d93db3d-photoroom(1)_31tw.png" 
-       alt="Cubes UI Logo" 
-       style="width: 40%; max-width: 600px; display: block; margin: 0 auto;" />
-</p>
-
 # Cubes UI
 
 Modern, reusable, and **developer-friendly UI components** powered by **Tailwind CSS** — perfect for building scalable design systems and accelerating development.
@@ -14,6 +8,12 @@ Modern, reusable, and **developer-friendly UI components** powered by **Tailwind
 [![npm version](https://img.shields.io/npm/v/cubes-ui?style=flat&color=green)](https://www.npmjs.com/package/cubes-ui)
 [![bundle size](https://img.shields.io/bundlephobia/minzip/cubes-ui?style=flat&color=orange)](https://bundlephobia.com/package/cubes-ui)
 [![license](https://img.shields.io/github/license/cubes-ui/cubes-ui?style=flat&color=yellow)](https://github.com/cubes-ui/cubes-ui/blob/master/LICENSE)
+
+<p align="center">
+  <img src="https://s6.uupload.ir/files/04fa27e6-9ace-471e-942b-04cf8d93db3d-photoroom(1)_31tw.png" 
+       alt="Cubes UI Logo" 
+       style="width: 40%; max-width: 600px; display: block; margin: 0 auto;" />
+</p>
 
 ---
 
