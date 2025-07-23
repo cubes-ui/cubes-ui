@@ -1,0 +1,69 @@
+{
+  "name": "cubes-ui",
+  "version": "0.0.35",
+  "main": "dist/index.js",
+  "license": "MIT",
+  "module": "dist/index.js",
+  "types": "dist/types/src/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "type": "module",
+  "bin": {
+    "cubes-ui-init": "./bin/cubes-ui-init.js"
+  },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  },
+  "scripts": {
+    "build": "bun build src/index.ts --outdir dist --external react --external react-dom && tsc -p tsconfig.build.json",
+    "test": "vitest",
+    "release": "ts-node --transpile-only release.config.ts && npx semantic-release -e ./release.config.ts"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/types/src/index.d.ts"
+    },
+    "./index.css": {
+      "import": "./index.css",
+      "default": "./index.css"
+    },
+    "./dist/index.css": {
+      "import": "./dist/index.css",
+      "default": "./dist/index.css"
+    }
+  },
+  "peerDependencies": {
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.1.11",
+    "@tanstack/react-query": "^5.83.0",
+    "@tanstack/react-router": "^1.129.8",
+    "lucide-react": "^0.525.0",
+    "tailwindcss": "^4.1.11"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.3",
+    "@semantic-release/npm": "^12.0.2",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@testing-library/react": "^16.3.0",
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^24.1.0",
+    "@types/react": "^19.1.8",
+    "@vitest/ui": "^3.2.4",
+    "jsdom": "^26.1.0",
+    "semantic-release": "^24.2.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

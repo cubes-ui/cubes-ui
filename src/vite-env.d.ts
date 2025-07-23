@@ -1,0 +1,7 @@
+interface ImportMetaEnv {
+  readonly VITE_CUBES_API_URL: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
