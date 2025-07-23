@@ -1,20 +1,21 @@
 {
   "name": "cubes-ui",
-  "version": "0.0.38",
+  "version": "0.0.39",
   "main": "dist/index.js",
-  "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/types/src/index.d.ts",
-  "publishConfig": {
-    "access": "public",
-    "registry": "https://registry.npmjs.org/"
-  },
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
   "files": [
     "dist"
   ],
-  "type": "module",
   "bin": {
     "cubes-ui-init": "./bin/cubes-ui-init.js"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "release": {
     "branches": [
@@ -22,7 +23,7 @@
     ]
   },
   "scripts": {
-    "build": "bun build src/index.ts --outdir dist --external react --external react-dom && tsc -p tsconfig.build.json",
+    "build": "bun build src/index.ts --outdir dist --minify --target browser --external react --external react-dom --external @tanstack/react-query --external @tanstack/react-router --external lucide-react && tsc -p tsconfig.build.json",
     "postbuild": "npm version patch --no-git-tag-version",
     "test": "vitest"
   },
@@ -53,12 +54,6 @@
     "tailwindcss": "^4.1.11"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^13.0.1",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.3",
-    "@semantic-release/npm": "^12.0.2",
-    "@semantic-release/release-notes-generator": "^14.0.3",
     "@testing-library/react": "^16.3.0",
     "@types/jsdom": "^21.1.7",
     "@types/node": "^24.1.0",
