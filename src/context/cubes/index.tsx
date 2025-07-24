@@ -1,6 +1,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React, { createContext, useContext } from "react";
 import { env } from "../../utils/env";
+import { ToastProvider } from "../toast";
 export type CubesContextType = {
   apiUrl?: string;
   getToken?: () => string | null;
@@ -16,6 +17,7 @@ export const CubesProvider = ({
 }: React.PropsWithChildren<CubesContextType>) => {
   return (
     <CubesContext.Provider value={values}>
+      <ToastProvider />
       <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
     </CubesContext.Provider>
   );
