@@ -1,7 +1,7 @@
 import { X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { cn, ToastOptions } from "../../utils";
-import "./button.css";
+import "./toast.css";
 
 interface ToastItemProps extends ToastOptions {
   onClose: () => void;
