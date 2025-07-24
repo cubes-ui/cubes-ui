@@ -24,7 +24,12 @@ export function Button(props: ButtonProps) {
     const { href, ...anchorProps } =
       rest as AnchorHTMLAttributes<HTMLAnchorElement>;
     return (
-      <a href={href!} {...anchorProps} className={composedClassName}>
+      <a
+        href={href!}
+        {...anchorProps}
+        className={composedClassName}
+        role="button"
+      >
         {children}
       </a>
     );
@@ -32,8 +37,8 @@ export function Button(props: ButtonProps) {
 
   return (
     <button
-      className={composedClassName}
       {...(rest as ButtonHTMLAttributes<HTMLButtonElement>)}
+      className={composedClassName}
     >
       {children}
     </button>
