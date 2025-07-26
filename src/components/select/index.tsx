@@ -1,8 +1,9 @@
-import { cn, useClickOutside } from "cubes-ui";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { selectBaseStyles, selectMenuStyles, selectSizeStyles, selectVariantStyles } from "./select.style";
 import { SelectProps } from "./select.type";
+import { useClickOutside } from "../../hooks";
+import { cn } from "../../utils";
 
 export const Select = ({
   options,
