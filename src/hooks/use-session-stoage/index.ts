@@ -1,22 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useCallback } from 'react';
+import { isClient } from '../../utils';
 
-export const useSessionStorage = <T = any>(key: string, initialValue: T | (() => T)) => {
-  const [value, setValue] = useState<T>(() => {
+export const useSessionStore = () => {
+
+  const getItem = useCallback((key: string): string | undefined => {
+    if (!isClient) return;
     try {
-      const jsonValue = sessionStorage.getItem(key);
-      if (jsonValue !== null) return JSON.parse(jsonValue);
-      return typeof initialValue === 'function' ? (initialValue as () => T)() : initialValue;
+      return sessionStorage.getItem(key) ?? undefined;
     } catch {
-      return typeof initialValue === 'function' ? (initialValue as () => T)() : initialValue;
+      return undefined;
     }
-  });
+  }, [isClient]);
 
-  useEffect(() => {
+  const setItem = useCallback((key: string, value: string): void => {
+    if (!isClient) return;
     try {
-      sessionStorage.setItem(key, JSON.stringify(value));
-    } catch {
-    }
-  }, [key, value]);
+      sessionStorage.setItem(key, value);
+    } catch {}
+  }, [isClient]);
 
-  return [value, setValue] as [T, typeof setValue];
+  const removeItem = useCallback((key: string): void => {
+    if (!isClient) return;
+    try {
+      sessionStorage.removeItem(key);
+    } catch {}
+  }, [isClient]);
+
+  return { getItem, setItem, removeItem };
 };
