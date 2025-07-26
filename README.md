@@ -4,16 +4,16 @@ Modern, reusable, and **developer-friendly UI components** powered by **Tailwind
 
 <a href="https://github.com/cubes-ui/cubes-ui">read documentation</a>
 
-[![npm downloads](https://img.shields.io/npm/dm/cubes-ui?style=flat&color=blue)](https://www.npmjs.com/package/cubes-ui)
-[![npm version](https://img.shields.io/npm/v/cubes-ui?style=flat&color=green)](https://www.npmjs.com/package/cubes-ui)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/cubes-ui?style=flat&color=orange)](https://bundlephobia.com/package/cubes-ui)
-[![license](https://img.shields.io/github/license/cubes-ui/cubes-ui?style=flat&color=yellow)](https://github.com/cubes-ui/cubes-ui/blob/master/LICENSE)
-
 <p align="center">
   <img src="https://s6.uupload.ir/files/04fa27e6-9ace-471e-942b-04cf8d93db3d-photoroom(1)_31tw.png" 
        alt="Cubes UI Logo" 
        style="width: 40%; max-width: 600px; display: block; margin: 0 auto;" />
 </p>
+
+[![npm downloads](https://img.shields.io/npm/dm/cubes-ui?style=flat&color=blue)](https://www.npmjs.com/package/cubes-ui)
+[![npm version](https://img.shields.io/npm/v/cubes-ui?style=flat&color=green)](https://www.npmjs.com/package/cubes-ui)
+[![bundle size](https://img.shields.io/bundlephobia/minzip/cubes-ui?style=flat&color=orange)](https://bundlephobia.com/package/cubes-ui)
+[![license](https://img.shields.io/github/license/cubes-ui/cubes-ui?style=flat&color=yellow)](https://github.com/cubes-ui/cubes-ui/blob/master/LICENSE)
 
 ---
 
@@ -27,17 +27,15 @@ npm install cubes-ui
 
 ## ⚙️ Setup
 
-After installing, run the built-in initializer:
-
 ```bash
 npx cubes-ui-init
 ```
 
 This command will:
 
-- Install required Tailwind packages (`tailwindcss`, `@tailwindcss/vite`)
-- Configure **Vite** to use the Tailwind plugin
-- Generate or update your `src/index.css` with the following:
+- Install required Tailwind packages
+- Configure Vite with Tailwind plugin
+- Update your CSS with:
 
 ```css
 @import "tailwindcss";
@@ -45,137 +43,149 @@ This command will:
 @source "../node_modules/cubes-ui/dist/index.css";
 ```
 
-This ensures that **Tailwind doesn't purge class names** used in `cubes-ui` and enables full styling support.
-
 ---
 
 ## 🧪 Usage
-
-Start using components right away:
 
 ```tsx
 import { Button } from "cubes-ui";
 
 export default function Example() {
-  return (
-    <Button variant="default" size="lg">
-      Click me
-    </Button>
-  );
+  return <Button variant="default" size="lg">Click me</Button>;
 }
 ```
 
-Each component supports:
+---
 
-- `variant`: `"default" | "outline" | "ghost"`
-- `size`: `"sm" | "md" | "lg"`
-- `className`: for custom utility overrides
+## 🔔 Toast System (powered by Sonner)
+
+Cubes UI uses [Sonner](https://sonner.emilkowal.dev) for elegant toast notifications:
+
+```tsx
+import { toast } from "cubes-ui";
+
+toast.success("Saved!");
+toast.error("Oops...");
+toast.custom(<div>Custom JSX</div>);
+```
+
+- Multiple positions (`top-left`, `bottom-center`, etc.)
+- Pause on hover
+- Light/Dark theme support
+- Dynamic content
+- Full control via options:
+
+```tsx
+toast.success("Updated!", { position: "top-center" });
+```
 
 ---
 
 ## 🔌 Integrations
 
-Cubes UI seamlessly integrates with modern React libraries:
-
-### **1. TanStack Query**
-
-Use Cubes UI components with `@tanstack/react-query` for data fetching:
+### TanStack Query
 
 ```tsx
 import { Spinner, useQuery } from "cubes-ui";
-
-function Users() {
-  const { data, isLoading } = useQuery({ endpoint: "users" });
-
-  if (isLoading) return <Spinner />;
-  return <div>{data.map((user) => user.name)}</div>;
-}
+const { data, isLoading } = useQuery({ endpoint: "users" });
 ```
 
----
-
-### **2. React Hook Form**
-
-Easily build forms with `react-hook-form`:
+### React Hook Form
 
 ```tsx
 import { Input, Button, useForm } from "cubes-ui";
-
-export default function Login() {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
-
-  return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Input label="Email" {...register("email")} />
-      <Button type="submit">Submit</Button>
-    </form>
-  );
-}
 ```
 
----
-
-### **3. Validation**
-
-Cubes UI works with **Zod** and other validation libraries:
+### Zod Validation
 
 ```tsx
-import { Validator, Input, Button, FormError, useForm } from "cubes-ui";
-
-const schema = {
-  email: Validator.email("Invalid email address"),
-};
-export default function Signup() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<typeof schema>();
-
-  return (
-    <form onSubmit={handleSubmit(console.log)}>
-      <Input label="Email" {...register("email")} />
-      {errors.email && <FormError>{errors.email.message}</FormError>}
-      <Button type="submit">Sign up</Button>
-    </form>
-  );
-}
+import { Validator, Input, FormError, useForm } from "cubes-ui";
 ```
 
 ---
 
-## 💡 Tips
+## 🧱 Built-in Hooks
 
-- **Purge safety**: `@source` ensures Tailwind doesn’t purge class names from `cubes-ui`.
-- **Custom themes**: Combine `@theme` and `@layer` to create custom themes.
-- **Dark mode ready**: Works out-of-the-box with Tailwind's `dark` mode.
+Cubes UI provides fully-typed and scalable hooks:
+
+### 🔩 Core Utilities
+
+| Hook               | Description                                                |
+|--------------------|------------------------------------------------------------|
+| `useDebounce`      | Debounces value or function                                |
+| `useThrottle`      | Throttles updates                                          |
+| `useClickOutside`  | Detects outside clicks                                     |
+| `useMediaQuery`    | Tracks screen breakpoints                                  |
+| `useLocalstorage`  | LocalStorage abstraction                                   |
+| `useSessionstorage`| SessionStorage abstraction                                 |
+| `useIndexedDB`     | Async IndexedDB state                                      |
+| `useCachestorage`  | Caches API responses locally                               |
+
+### 🌐 API & Request Hooks
+
+| Hook          | Description                                                              |
+|---------------|--------------------------------------------------------------------------|
+| `useRequest`  | Unified fetch via TanStack Query                                         |
+| `useMutation` | Typed mutations with endpoint/token                                      |
+| `useQuery`    | Enhanced query with loader and endpoint                                  |
+
+### ⚡️ Realtime & WebSocket Hooks
+
+| Hook         | Description                                                              |
+|--------------|--------------------------------------------------------------------------|
+| `useSocket`   | WebSocket integration with token and reconnect support                  |
+
+### 🎭 UI/UX Hooks
+
+| Hook               | Description                                             |
+|--------------------|---------------------------------------------------------|
+| `useLazyTransition`| Improved transitions via `useTransition` wrapper        |
+| `useIsFirstRender` | Detect initial render                                   |
+| `useHoverIntent`   | Intent-based hover detection                            |
+| `useMountEffect`   | Run effect only once on mount                           |
+
+### 🧪 Developer Experience
+
+| Hook              | Description                                                  |
+|-------------------|--------------------------------------------------------------|
+| `useTraceRender`  | Logs re-renders for performance insights                     |
 
 ---
 
-## 📚 Components
+## ⚙️ Context with CubesProvider
 
-Cubes UI offers **utility-first, accessible, and customizable components**.  
-**More components and hooks are coming soon!**
-
----
-
-## 🛠 CLI Tool
-
-```bash
-cubes-ui-init
+```tsx
+<CubesProvider
+  apiUrl="https://api.example.com"
+  getToken={() => localStorage.getItem("token")}
+  onUnauthorized={() => redirectTo("/login")}
+>
+  <App />
+</CubesProvider>
 ```
 
-Use this tool to refresh Tailwind integration, safely append missing imports, or regenerate configuration.
+Hooks like `useRequest` and `useSocket` automatically access this context.
 
 ---
 
-## 📝 License
+## 🧠 Tips & Tricks
 
-**MIT** — free to use, modify, and share.
+- **Tailwind-safe imports** using `@source`
+- **Custom themes** via `@layer`
+- **Dark mode** support out-of-the-box
 
 ---
 
-## ❤️ Created for developers who love clean, efficient UI
+## 🔗 Resources
 
+- 📖 [Docs](https://github.com/cubes-ui/cubes-ui)
+- 📦 [npm](https://www.npmjs.com/package/cubes-ui)
+- 🧪 [Demo](https://codesandbox.io/s/cubes-ui-demo)
+- 📊 [Bundle](https://bundlephobia.com/package/cubes-ui)
+
+---
+
+## ❤️ Built for developers who love clean UI
+
+> Cubes UI helps you move faster with consistent design, powerful hooks, and blazing-fast integration.  
 Built with love and Tailwind.

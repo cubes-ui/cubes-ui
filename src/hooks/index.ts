@@ -12,3 +12,6 @@ export * from "./use-debounce";
 export * from "./use-media-query";
 export * from "./use-lazy-transition";
 export * from "./use-socket";
+export * from "./use-hover-intent";
+export * from "./use-mount-effect";
+export * from "./use-trace-render";
