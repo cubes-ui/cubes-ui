@@ -1,5 +1,5 @@
 export * from "./use-request";
-export * from "./use-session-stoage";
+export * from "./use-session-storage";
 export * from "./use-local-storage";
 export * from "./use-device";
 export * from "./use-cookies";
