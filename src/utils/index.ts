@@ -17,3 +17,4 @@ export * from "./json-parser";
 export * from "./capitalize";
 export * from "./create-store";
 export * from "./theme-creator";
+export * from "./build-form-data";
