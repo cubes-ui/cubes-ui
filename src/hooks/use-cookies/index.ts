@@ -7,7 +7,7 @@ export interface CookieOptions {
   sameSite?: 'Lax' | 'Strict' | 'None';
 }
 
-const useCookies = () => {
+export const useCookies = () => {
   const isClient = typeof window !== 'undefined';
 
   const getCookie = useCallback((name: string): string | undefined => {
@@ -49,5 +49,3 @@ const useCookies = () => {
 
   return { getCookie, setCookie, deleteCookie };
 };
-
-export default useCookies;

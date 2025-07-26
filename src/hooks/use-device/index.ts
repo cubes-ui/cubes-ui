@@ -22,7 +22,7 @@ const getDeviceType = (): DeviceState => {
   return "Desktop";
 };
 
-const useDevice = (): DeviceInfo => {
+export const useDevice = (): DeviceInfo => {
   const [state, setState] = useState<DeviceState>(() => getDeviceType());
 
   const updateDeviceState = useCallback(() => {
@@ -43,5 +43,3 @@ const useDevice = (): DeviceInfo => {
     isDesktop: state === "Desktop",
   };
 };
-
-export default useDevice;

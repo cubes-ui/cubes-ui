@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-const useFirstRender = (): boolean => {
+export const useFirstRender = (): boolean => {
   const firstRef = useRef(true);
 
   useEffect(() => {
@@ -9,5 +9,3 @@ const useFirstRender = (): boolean => {
 
   return firstRef.current;
 };
-
-export default useFirstRender;

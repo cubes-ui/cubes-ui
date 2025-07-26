@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useSessionStorage = <T = any>(key: string, initialValue: T | (() => T)) => {
+export const useSessionStorage = <T = any>(key: string, initialValue: T | (() => T)) => {
   const [value, setValue] = useState<T>(() => {
     try {
       const jsonValue = sessionStorage.getItem(key);
@@ -20,5 +20,3 @@ const useSessionStorage = <T = any>(key: string, initialValue: T | (() => T)) =>
 
   return [value, setValue] as [T, typeof setValue];
 };
-
-export default useSessionStorage;
