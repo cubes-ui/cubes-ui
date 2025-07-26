@@ -116,10 +116,10 @@ Cubes UI provides fully-typed and scalable hooks:
 | `useThrottle`      | Throttles updates                                          |
 | `useClickOutside`  | Detects outside clicks                                     |
 | `useMediaQuery`    | Tracks screen breakpoints                                  |
-| `useLocalstorage`  | LocalStorage abstraction                                   |
-| `useSessionstorage`| SessionStorage abstraction                                 |
+| `useLocalStorage`  | LocalStorage abstraction                                   |
+| `useSessionStorage`| SessionStorage abstraction                                 |
 | `useIndexedDB`     | Async IndexedDB state                                      |
-| `useCachestorage`  | Caches API responses locally                               |
+| `useCacheStorage`  | Caches API responses locally                               |
 
 ### 🌐 API & Request Hooks
 
