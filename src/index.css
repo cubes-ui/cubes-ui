@@ -21,6 +21,9 @@
   --color-error: var(--color-rose-600);
 }
 button,
-a {
-  @apply cursor-pointer disabled:cursor-not-allowed;
+a,
+input,
+textarea,
+select {
+  @apply !cursor-pointer disabled:!cursor-not-allowed;
 }
