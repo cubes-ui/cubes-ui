@@ -1,8 +1,7 @@
 import { useCallback } from 'react';
 import { isClient } from '../../utils';
 
-export const useSessionStore = () => {
-
+export const useSessionStorage = () => {
   const getItem = useCallback((key: string): string | undefined => {
     if (!isClient) return;
     try {
