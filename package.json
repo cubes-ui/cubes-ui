@@ -1,6 +1,6 @@
 {
   "name": "cubes-ui",
-  "version": "0.0.64",
+  "version": "0.0.67",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/types/src/index.d.ts",
