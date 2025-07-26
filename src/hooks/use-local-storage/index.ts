@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
 import { isClient } from '../../utils';
 
-export const useLocalStore = () => {
+export const useLocalStorage = () => {
 
   const getItem = useCallback((key: string): string | undefined => {
     if (!isClient) return;
