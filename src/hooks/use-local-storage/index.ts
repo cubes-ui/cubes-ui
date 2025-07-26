@@ -1,37 +1,30 @@
-import { useEffect, useState } from "react";
+import { useCallback } from 'react';
+import { isClient } from '../../utils';
 
-export const useLocalStorage = <T = any>(key: string, initialValue: T | (() => T)) => {
-  const [value, setValue] = useState<T>(() => {
+export const useLocalStore = () => {
+
+  const getItem = useCallback((key: string): string | undefined => {
+    if (!isClient) return;
     try {
-      const json = localStorage.getItem(key);
-      if (json !== null) return JSON.parse(json);
-      return typeof initialValue === "function"
-        ? (initialValue as () => T)()
-        : initialValue;
+      return localStorage.getItem(key) ?? undefined;
     } catch {
-      return typeof initialValue === "function"
-        ? (initialValue as () => T)()
-        : initialValue;
+      return undefined;
     }
-  });
+  }, [isClient]);
 
-  useEffect(() => {
+  const setItem = useCallback((key: string, value: string): void => {
+    if (!isClient) return;
     try {
-      localStorage.setItem(key, JSON.stringify(value));
+      localStorage.setItem(key, value);
     } catch {}
-  }, [key, value]);
+  }, [isClient]);
 
-  useEffect(() => {
-    const sync = (e: StorageEvent) => {
-      if (e.key === key && e.newValue !== null) {
-        try {
-          setValue(JSON.parse(e.newValue));
-        } catch {}
-      }
-    };
-    window.addEventListener("storage", sync);
-    return () => window.removeEventListener("storage", sync);
-  }, [key]);
+  const removeItem = useCallback((key: string): void => {
+    if (!isClient) return;
+    try {
+      localStorage.removeItem(key);
+    } catch {}
+  }, [isClient]);
 
-  return [value, setValue] as [T, typeof setValue];
+  return { getItem, setItem, removeItem };
 };
