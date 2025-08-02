@@ -19,3 +19,4 @@ export * from "./use-interval";
 export * from "./use-clipboard";
 export * from "./use-event-listener";
 export * from "./use-toggle";
+export * from "./use-captcha";
