@@ -11,7 +11,6 @@ export * from "./format-date";
 export * from "./animate-scroll";
 export * from "./html-parser";
 export * from "./is-dark-color";
-export * from "./jss";
 export * from "./wait";
 export * from "./json-parser";
 export * from "./capitalize";
