@@ -39,3 +39,4 @@ export * from "./accordion";
 export * from "./breadcrumb";
 export * from "./input-otp";
 export * from "./skeleton";
+export * from "./modal";
