@@ -4,5 +4,5 @@ export const modalStyles = {
   modalParent: "w-full h-full absolute top-0 left-0 bg-black/70",
   closerElementParent:
     "w-full flex justify-end mb-4 relative items-center text-xl",
-  title: "absolute left-1/2 !h-max top-1/2 -translate-y-1/2 -translate-x-1/2",
+  title: "flex max-w-[250px] items-center gap-2",
 };

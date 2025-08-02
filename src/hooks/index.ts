@@ -20,3 +20,4 @@ export * from "./use-clipboard";
 export * from "./use-event-listener";
 export * from "./use-toggle";
 export * from "./use-captcha";
+export * from "./use-modal";

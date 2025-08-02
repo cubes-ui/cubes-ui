@@ -23,7 +23,10 @@ export const Modal = ({
       <div className="w-full h-full flex justify-center items-center">
         <div ref={ref} className={cn(modalStyles.modal, className)}>
           <div className={modalStyles.closerElementParent}>
-            <p className={modalStyles.title}>{title}</p>
+            <div className={modalStyles.title}>
+              <div className="min-h-full">{title?.icon}</div>
+              <p className="truncate">{title?.title}</p>
+            </div>
             <X
               className="hover:text-red-500 duration-200 cursor-pointer"
               onClick={closeModal}

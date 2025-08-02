@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
-
+type ModalTitle = { title: string; icon?: ReactNode };
 export type ModalState = {
   content: ReactNode;
   config?: {
-    title?: string;
+    title?: ModalTitle;
     className?: string;
     closeWithClickOutside?: boolean;
   };
@@ -13,6 +13,11 @@ export type ModalProps = {
   closeWithClickOutside: boolean;
   children: ReactNode;
   className?: string;
-  title?: string;
+  title?: ModalTitle;
   closeModal: () => void;
+};
+export type ModalHookProps = {
+  title?: ModalTitle;
+  closeWithClickOutside?: boolean;
+  className?: string;
 };
