@@ -29,15 +29,34 @@ function installPackages() {
   }
 }
 
+function isNextJsApp() {
+  const pkgJsonPath = path.resolve(process.cwd(), "package.json");
+  if (!fs.existsSync(pkgJsonPath)) return false;
+
+  const pkg = JSON.parse(fs.readFileSync(pkgJsonPath, "utf-8"));
+  return (
+    pkg.dependencies?.next ||
+    pkg.devDependencies?.next
+  );
+}
+
 function updateViteConfig() {
+  if (isNextJsApp()) {
+    console.log("⚠️ Detected a Next.js project. Skipping Vite config update.");
+    console.log("👉 Vite config not used in Next.js. Make sure to configure Tailwind & PostCSS correctly.");
+    return;
+  }
+
   const viteConfigPathTs = path.resolve(process.cwd(), "vite.config.ts");
   const viteConfigPathJs = path.resolve(process.cwd(), "vite.config.js");
   let viteConfigPath = fs.existsSync(viteConfigPathTs)
     ? viteConfigPathTs
-    : viteConfigPathJs;
+    : fs.existsSync(viteConfigPathJs)
+    ? viteConfigPathJs
+    : null;
 
   if (!viteConfigPath) {
-    console.warn("⚠ vite.config.ts/js not found.");
+    console.warn("⚠️ vite.config.ts/js not found. Skipping Vite config update.");
     return;
   }
 
